@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- PAGE TITLE
+    ================================================== -->
+    <header class="py-8 py-md-11" style="background-image: none;">
+        <div class="container text-center py-xl-2">
+            <h1 class="display-4 fw-semi-bold mb-0">Mettre à jour le profil</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-scroll justify-content-center">
+                    <li class="breadcrumb-item">
+                        <a class="text-gray-800" href="#">
+                           Accueil
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-800 active" aria-current="page">
+                        Profil en jour
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        <!-- Img -->
+        <img class="d-none img-fluid" src="...html" alt="...">
+    </header>
+
+    <!-- Card -->
+            <div class="card" style="width:80%;margin-left:10%;">
+                {% include 'components/msg.html' %}
+                <br>
+              <div class="card-body" >
+             
+                <form method="post" action="{% url 'profile_update' %}">
+                    {% csrf_token %}
+                  <div class="row">
+                        <div class="col">
+                            <div class="form-group mb-4">
+                              <label>Prénom</label>
+                             <input type="text" class="form-control"  placeholder="Entrez votre Prénom" name="first_name" value="{{user.first_name}}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group mb-4">
+                              <label>Nom</label>
+                              <input type="text" class="form-control" placeholder="Entrez votre Nom" name="last_name" value="{{user.last_name}}">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col">
+                             <div class="form-group mb-4">
+                                <label>Adresse Email</label>
+                                <input type="email" class="form-control" placeholder="Entrez votre email" name="email" value="{{user.email}}">
+                             </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group mb-4">
+                               <label>Nom d'Utilisateur</label>
+                               <input type="text" class="form-control" placeholder="Entrez votre nom d'utilisateur" name="username" value="{{user.username}}">
+                            </div>
+                        </div>
+                      <div class="col-12">
+                            <div class="form-group mb-4">
+                               <label>Mot de passe</label>
+                               <input type="password" class="form-control" placeholder="Remplissez uniquement si vous voulez changer de mot de passe" name="password">
+                            </div>
+                        </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Mettre à jour </button>
+                </form>
+
+              </div>
+            </div>
+{% endblock %}
